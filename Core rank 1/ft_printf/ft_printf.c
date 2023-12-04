@@ -12,22 +12,42 @@
 
 #include "libftprintf.h"
 
+static int	printf_operator(va_list arg, const char operator)
+{
+	int		len;
 
+	len = 0;
+	if (operator == 'c')
+		len += ft_putchar(va_arg(arg, int));
+	else if (operator == 's')
+		len += ft_putstr(va_arg(arg, char *));
+	else if (operator == 'p')
+		len += ft_print_pointer(va_arg(arg, unsigned long long));
+	else if (operator == 'd' || operator == 'i')
+		len += ft_putnbr(va_arg(arg, int));
+	else if (operator == 'u')
+		len += ft_print_unsigned(va_arg(arg, unsigned int));
+	else if (operator == 'x' || operator == 'X')
+		len += ft_print_hex(va_arg(arg, int));
+	else if (operator == '%')
+		len += ft_print_percentage();
+	return (len);
+}
 
 int	ft_printf(const char *str, ...)
 {
 	int		i;
-	va_list	arg;
 	int		print_len;
+	va_list	arg;
 
 	i = 0;
 	print_len = 0;
 	va_start(arg, str);
-	while (str[i])
+	while (str[i] != '\0')
 	{
 		if (str[i] == '%')
 		{
-			print_len += ft_format(arg, str[i + 1]);
+			print_len += printf_operator(arg, str[i + 1]);
 			i++;
 		}
 		else

@@ -21,9 +21,9 @@ $(NAME): $(OBJS)
 clean:
 			@$(RM) $(OBJS)
 
-fclean:
-			@$(RM) $(NAME) $(OBJS)
+fclean:	clean
+			@$(RM) $(NAME)
 
-re:			fclean $(NAME)
+re:			fclean all
 
 .PHONY: all, clean, fclean, re
