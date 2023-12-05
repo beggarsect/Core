@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_number.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hienguye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/04 12:03:17 by hienguye          #+#    #+#             */
-/*   Updated: 2023/12/04 12:03:21 by hienguye         ###   ########.fr       */
+/*   Created: 2023/12/04 12:03:28 by hienguye          #+#    #+#             */
+/*   Updated: 2023/12/04 12:03:34 by hienguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	ft_putstr(char *s)
+ft_number(int n, int *len)
 {
-	int	i;
-
-	i = 0;
-	if (s == NULL)
+	if (n == -2147483648)
 	{
-		write(1, "(null)", 6);
-		return (6);
+		ft_string("-2147483648");
+		return (0);
 	}
-	while (s[i])
+	else if (n < 0)
 	{
-		write(1, &s[i], 1);
-		i++;
+		ft_character('-');
+		ft_number(-n);
 	}
-	return (i);
+	else if (n > 9)
+	{
+		ft_number(n / 10);
+		ft_character(n % 10 + '0');
+	}
+	else
+		ft_putchar(n + '0');
+	return (0);
 }

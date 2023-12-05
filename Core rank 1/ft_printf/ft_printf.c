@@ -18,19 +18,19 @@ static int	printf_operator(va_list arg, const char operator)
 
 	len = 0;
 	if (operator == 'c')
-		len += ft_putchar(va_arg(arg, int));
+		len += ft_character(va_arg(arg, int));
 	else if (operator == 's')
 		len += ft_putstr(va_arg(arg, char *));
 	else if (operator == 'p')
-		len += ft_print_pointer(va_arg(arg, unsigned long long));
+		len += ft_putptr(va_arg(arg, unsigned long long));
 	else if (operator == 'd' || operator == 'i')
 		len += ft_putnbr(va_arg(arg, int));
 	else if (operator == 'u')
-		len += ft_print_unsigned(va_arg(arg, unsigned int));
+		len += ft_putunsi(va_arg(arg, unsigned int));
 	else if (operator == 'x' || operator == 'X')
-		len += ft_print_hex(va_arg(arg, int));
+		len += ft_puthex(va_arg(arg, int));
 	else if (operator == '%')
-		len += ft_print_percentage();
+		len += ft_putper();
 	return (len);
 }
 
