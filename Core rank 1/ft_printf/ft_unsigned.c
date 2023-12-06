@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_unsigned.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hienguye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/14 10:58:56 by hienguye          #+#    #+#             */
-/*   Updated: 2023/09/14 10:59:01 by hienguye         ###   ########.fr       */
+/*   Created: 2023/12/05 14:48:02 by hienguye          #+#    #+#             */
+/*   Updated: 2023/12/05 14:48:04 by hienguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putstr(const char *str)
+int	ft_unsigned(unsigned int num)
 {
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
+	return (num);
 }

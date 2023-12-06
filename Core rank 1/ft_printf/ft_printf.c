@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-static int	printf_operator(va_list arg, const char operator)
+int	printf_operator(va_list arg, const char operator)
 {
 	int		len;
 
@@ -20,17 +20,17 @@ static int	printf_operator(va_list arg, const char operator)
 	if (operator == 'c')
 		len += ft_character(va_arg(arg, int));
 	else if (operator == 's')
-		len += ft_putstr(va_arg(arg, char *));
-	else if (operator == 'p')
-		len += ft_putptr(va_arg(arg, unsigned long long));
-	else if (operator == 'd' || operator == 'i')
-		len += ft_putnbr(va_arg(arg, int));
-	else if (operator == 'u')
-		len += ft_putunsi(va_arg(arg, unsigned int));
-	else if (operator == 'x' || operator == 'X')
-		len += ft_puthex(va_arg(arg, int));
-	else if (operator == '%')
-		len += ft_putper();
+		len += ft_string(va_arg(arg, char *));
+	// else if (operator == 'p')
+	// 	len += ft_pointer(va_arg(arg, unsigned long long));
+	// else if (operator == 'd' || operator == 'i')
+	// 	len += ft_number(va_arg(arg, int));
+	// else if (operator == 'u')
+	// 	len += ft_unsigned(va_arg(arg, unsigned int));
+	// else if (operator == 'x' || operator == 'X')
+	// 	len += ft_hexadecimal(va_arg(arg, int));
+	// else if (operator == '%')
+	// 	len += ft_percentage();
 	return (len);
 }
 
@@ -51,9 +51,24 @@ int	ft_printf(const char *str, ...)
 			i++;
 		}
 		else
-			print_len += ft_putchar(str[i]);
+			print_len += ft_character(str[i]);
 		i++;
 	}
 	va_end(arg);
 	return (print_len);
+}
+
+int	main(void)
+{
+	char	c = 'a';
+	char	*string = "324";
+	int		num = 123;
+
+
+	ft_printf("string: %s\n", string);
+	printf("orig:%s\n\n", string);
+
+	ft_printf("char: %c\n", c);
+	printf("orig: %c\n\n", c);
+
 }

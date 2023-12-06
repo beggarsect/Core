@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-ft_number(int n, int *len)
+int	ft_number(int n)
 {
 	if (n == -2147483648)
 	{
@@ -30,6 +30,6 @@ ft_number(int n, int *len)
 		ft_character(n % 10 + '0');
 	}
 	else
-		ft_putchar(n + '0');
+		ft_character(n + '0');
 	return (0);
 }
