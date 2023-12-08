@@ -20,13 +20,10 @@
 
 int		ft_printf(const char *str, ...);
 int		ft_character(int c);
-int		ft_number(int nb);
+int		ft_number(int num);
 int		ft_string(char *str);
 int		ft_pointer(unsigned long num);
 int		ft_unsigned(unsigned int num);
-int		ft_hexadecimal(int num);
-int		ft_percentage(void);
-char	*ft_itoa(int n);
-void	ft_putstr(const char *str);
+int		ft_hexadecimal(unsigned int num, char x);
 
 #endif

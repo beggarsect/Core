@@ -1,1 +1,0 @@
-cc ft_printf.c ft_printf.h ft_character.c ft_string.c ft_pointer.c ft_number.c ft_unsigned.c ft_hexadecimal.c ft_percentage.c

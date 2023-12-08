@@ -12,24 +12,37 @@
 
 #include "ft_printf.h"
 
-int	ft_number(int n)
+static int	ft_recursion(unsigned int num)
 {
-	if (n == -2147483648)
+	int	i;
+
+	i = 0;
+	if (num == 0)
+		return (i);
+	i += ft_recursion(num / 10);
+	ft_character((num % 10) + '0');
+	return (i + 1);
+}
+
+int	ft_number(int num)
+{
+	int	i;
+
+	i = 0;
+	if (num == -2147483648)
 	{
-		ft_string("-2147483648");
-		return (0);
+		return (ft_string("-2147483648"));
 	}
-	else if (n < 0)
+	else if (num == 0)
+	{
+		return (ft_character('0'));
+	}
+	else if (num < 0)
 	{
 		ft_character('-');
-		ft_number(-n);
-	}
-	else if (n > 9)
-	{
-		ft_number(n / 10);
-		ft_character(n % 10 + '0');
+		num = -num;
+		return (ft_recursion(num) + 1);
 	}
 	else
-		ft_character(n + '0');
-	return (0);
+		return (ft_recursion(num));
 }

@@ -27,10 +27,12 @@ int	printf_operator(va_list arg, const char operator)
 		len += ft_number(va_arg(arg, int));
 	else if (operator == 'u')
 		len += ft_unsigned(va_arg(arg, unsigned int));
-	else if (operator == 'x' || operator == 'X')
-		len += ft_hexadecimal(va_arg(arg, int));
+	else if (operator == 'x')
+		len += ft_hexadecimal(va_arg(arg, unsigned int), 'x');
+	else if (operator == 'X')
+		len += ft_hexadecimal(va_arg(arg, unsigned int), 'X');
 	else if (operator == '%')
-		len += ft_percentage();
+		len += ft_character('%');
 	return (len);
 }
 
@@ -58,22 +60,28 @@ int	ft_printf(const char *str, ...)
 	return (print_len);
 }
 
-int	main(void)
-{
-	char	c = 'a';
-	char	*string = "324";
-	char	*ptr;
-	int		num = -2147483648;
+// int	main(void)
+// {
+// 	char	c = 'a';
+// 	char	*string = "324";
+// 	char	*ptr = 0;
+// 	int		num1 = -2147483648;
+// 	int		num2;
 
-	ft_printf("strn: %s\n", string);
-	printf("orig: %s\n\n", string);
+// 	ft_printf("strn: %s\n", string);
+// 	printf("orig: %s\n\n", string);
 
-	ft_printf("char: %c\n", c);
-	printf("orig: %c\n\n", c);
+// 	ft_printf("char: %c\n", c);
+// 	printf("orig: %c\n\n", c);
 
-	ft_printf("pntr: %p\n", ptr);
-	printf("orig: %p\n\n", ptr);
+// 	ft_printf("pntr: %p\n", ptr);
+// 	printf("orig: %p\n\n", ptr);
 
-	ft_printf("nmbr: %i\n", num);
-	printf("orig: %i\n\n", num);
-}
+// 	ft_printf("nmbr: %d\n", -150);
+// 	printf("orig: %d\n\n", -150);
+
+// 	num1 = ft_printf("pntr: %X\n", -1);
+// 	num2 = printf("orig: %X\n\n", -1);
+
+// 	printf("---\n%d\n---\n%d\n---", num1, num2);
+// }

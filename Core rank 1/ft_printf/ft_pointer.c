@@ -12,20 +12,20 @@
 
 #include "ft_printf.h"
 
-int	ft_p(size_t num)
+static int	ft_p(size_t num)
 {
-	const char	*s;
+	const char	*base;
 	int			i;
 
 	i = 0;
-	s = "0123456789abcdef";
+	base = "0123456789abcdef";
 	if (num >= 16)
 	{
 		i += ft_p(num / 16);
 		i += ft_p(num % 16);
 	}
 	else
-		i += write(1, &s[num], 1);
+		i += write(1, &base[num], 1);
 	return (i);
 }
 

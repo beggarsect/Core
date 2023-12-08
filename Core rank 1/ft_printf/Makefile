@@ -7,7 +7,7 @@ CC		=		cc
 RM		=		rm -f
 
 SRC		=		ft_character.c ft_hexadecimal.c \
-				ft_number.c ft_percentage.c		\
+				ft_number.c 					\
 				ft_pointer.c ft_printf.c		\
 				ft_string.c ft_unsigned.c 		\
 
